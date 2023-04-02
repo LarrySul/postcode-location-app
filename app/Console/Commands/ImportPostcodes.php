@@ -8,7 +8,6 @@ use Illuminate\Console\Command;
 use App\Jobs\InitializePostcodeJob;
 
 
-
 class ImportPostcodes extends Command
 {
     use PostcodeUtils;
@@ -17,7 +16,7 @@ class ImportPostcodes extends Command
      *
      * @var string
      */
-    protected $signature = 'import:postcodes';
+    protected $signature = 'import-and-create:postcodes';
 
     /**
      * The console command description.
@@ -45,9 +44,9 @@ class ImportPostcodes extends Command
     {
         try {
             $create_file_directory = $this->downloadAndSavePostcodeFromRemoteServer();
-            $this->info('Job has been processed ...');
+            $this->info('File processing ...');
             InitializePostcodeJob::dispatch();
-            $this->info('Job executed completely ...');
+            $this->info('File completely processed ...');
         } catch (Exception $e) {
             $this->error('An error occurred: ' . $e->getMessage());
         }
