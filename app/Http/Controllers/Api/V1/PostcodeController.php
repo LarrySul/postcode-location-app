@@ -8,7 +8,6 @@ use App\Helpers\Response;
 use Illuminate\Http\Request;
 use App\Traits\PostcodeUtils;
 use App\Interfaces\StatusCode;
-use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
 
 class PostcodeController extends Controller implements StatusCode
