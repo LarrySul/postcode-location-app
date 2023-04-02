@@ -28,11 +28,11 @@ class PostcodeController extends Controller implements StatusCode
                     ->where('usertype', $request->usertype)
                     ->where(function($query) use ($searchParam) {
                         if($searchParam){
-                            $query->where('pcd', 'LIKE', '%' . $searchParam. '%')
-                                ->orWhere('pcd2', 'LIKE', '%' . $searchParam . '%')
-                                ->orWhere('pcds', 'LIKE', '%' . $searchParam . '%')
-                                ->orWhere('long', 'LIKE', '%' . $searchParam . '%')
-                                ->orWhere('lat', 'LIKE', '%' . $searchParam . '%');
+                            $query->where('pcd', 'LIKE', $searchParam)
+                                ->orWhere('pcd2', 'LIKE', $searchParam )
+                                ->orWhere('pcds', 'LIKE', $searchParam )
+                                ->orWhere('long', 'LIKE', $searchParam )
+                                ->orWhere('lat', 'LIKE', $searchParam );
                         }
                     })->orderBy('id', 'ASC')
                     ->paginate($request->limit ?? 10);
@@ -64,11 +64,11 @@ class PostcodeController extends Controller implements StatusCode
                     ->whereBetween('long', [$calculate_bound['min_long'], $calculate_bound['max_long']])
                     ->where(function($query) use ($searchParam) {
                         if($searchParam){
-                            $query->where('pcd', 'LIKE', '%' . $searchParam. '%')
-                                ->orWhere('pcd2', 'LIKE', '%' . $searchParam . '%')
-                                ->orWhere('pcds', 'LIKE', '%' . $searchParam . '%')
-                                ->orWhere('long', 'LIKE', '%' . $searchParam . '%')
-                                ->orWhere('lat', 'LIKE', '%' . $searchParam . '%');
+                            $query->where('pcd', 'LIKE', $searchParam)
+                                ->orWhere('pcd2', 'LIKE', $searchParam )
+                                ->orWhere('pcds', 'LIKE', $searchParam )
+                                ->orWhere('long', 'LIKE', $searchParam )
+                                ->orWhere('lat', 'LIKE', $searchParam );
                         }
                     })->orderBy('id', 'ASC')
                     ->paginate($request->limit ?? 10);
