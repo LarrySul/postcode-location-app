@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Postcode;
+use App\Helpers\Response;
 use Illuminate\Http\Request;
 use App\Traits\PostcodeUtils;
 use App\Interfaces\StatusCode;
@@ -15,12 +16,12 @@ class PostcodeController extends Controller implements StatusCode
     public function getAllPostcodes(Request $request)
     {
         $request->validate([
-            'search_query' => 'nullable|string',
+            'q' => 'nullable|string',
             'usertype' => 'required|integer',
             'limit' => 'nullable|integer|min:1|max:100',
         ]);
 
-        $searchParam = $request->search_query;
+        $searchParam = $request->q;
 
         $postcodes = Postcode::select('id', 'pcd', 'pcd2', 'pcds', 'long', 'lat')
                     ->where('usertype', $request->usertype)
@@ -34,11 +35,12 @@ class PostcodeController extends Controller implements StatusCode
                         }
                     })->paginate($request->limit ?? 10);
 
-        if (empty($postcodes)) {
-            return response()->json(['message' => 'No matching postcodes found'], StatusCode::NOT_FOUND);
+        if ($postcodes->isEmpty()) {
+            return Response::setResponse(StatusCode::NOT_FOUND, [], 'Postcode not found');
         }
 
-        return response()->json(['postcodes' => $postcodes], StatusCode::OK);
+        return Response::setResponse(StatusCode::OK, $postcodes, 'Post code retrieved');
+
     }
 
     public function getNearbyPostcodes(Request $request)
@@ -58,10 +60,10 @@ class PostcodeController extends Controller implements StatusCode
                     ->whereBetween('long', [$calculate_bound['min_long'], $calculate_bound['max_long']])
                     ->paginate($request->limit ?? 10);
 
-        if (empty($nearByPostcodes)) {
-            return response()->json(['message' => 'No matching postcodes found'], StatusCode::NOT_FOUND);
+        if ($nearByPostcodes->isEmpty()) {
+            return Response::setResponse(StatusCode::NOT_FOUND, [], 'Postcode not found');
         }
 
-        return response()->json(['postcodes' => $nearByPostcodes], StatusCode::OK);
+        return Response::setResponse(StatusCode::OK, $postcodes, 'Post code retrieved');
     }
 }
