@@ -40,7 +40,7 @@ class CompletePostcodeJob implements ShouldQueue
             throw $e;
         }
 
-        \Storage::deleteDirectory("public/postcode"); 
+        Storage::deleteDirectory("public/postcode"); 
 
     }
 }
