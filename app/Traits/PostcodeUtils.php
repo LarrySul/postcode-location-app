@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 trait PostcodeUtils
 {
 
-    public function downloadAndSavePostcodeFromRemoteServer()
+    public function downloadAndSavePostcodeFromRemoteServer() : string 
     {
         $zipFileUrl = config('services.zip.file_url');
         try {
@@ -28,8 +28,7 @@ trait PostcodeUtils
         }
     }
 
-
-    public function calculateBoundingBox($latitude, $longitude, $distanceInMiles) 
+    public function calculateBoundingBox(float $latitude, float $longitude, int $distanceInMiles) : array
     {
         $earthRadius = 3959; // Radius of the earth in miles
         
