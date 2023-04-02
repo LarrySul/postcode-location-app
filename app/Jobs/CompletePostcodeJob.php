@@ -7,6 +7,7 @@ use App\Models\Postcode;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -38,6 +39,9 @@ class CompletePostcodeJob implements ShouldQueue
             DB::rollBack();
             throw $e;
         }
+
+        \Storage::deleteDirectory("public/postcode"); 
+
     }
 }
 
