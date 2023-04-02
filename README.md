@@ -20,7 +20,7 @@ Specifications in the clone include
 
 ![Endpoint to list all postcodes](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/list.png)
 
-![Endpoint to return nearby postcodes](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/near.png)
+![Endpoint to return nearby postcodes](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/nearby.png)
 
 <li> Writing of errors to logfile </li>
 
