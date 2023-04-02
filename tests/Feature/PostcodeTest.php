@@ -6,7 +6,6 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\Postcode;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-// use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PostcodeTest extends TestCase
 {
@@ -14,7 +13,7 @@ class PostcodeTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        Postcode::factory()->count(100)->create();
+        Postcode::factory()->count(10)->create();
     }
 
     public function test_get_all_postcodes_with_filter()
