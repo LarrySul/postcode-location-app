@@ -19,7 +19,8 @@ class PostcodeTest extends TestCase
 
     public function test_get_all_postcodes_with_filter()
     {
-        $response = $this->get('/api/v1/postcode/get-all-postcodes?usertype=1');
+        $query = '';
+        $response = $this->get('/api/v1/postcode/get-all-postcodes?usertype=1&q='. $query);
         $response->assertStatus(200);
         $jsonResponse = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('postcodes', $jsonResponse);
