@@ -52,7 +52,6 @@ class PostcodeController extends Controller implements StatusCode
         ]);
 
         $calculate_bound = $this->calculateBoundingBox($request->lat, $request->long, $request->distance);
-
         $nearByPostcodes = Postcode::select('id', 'pcd', 'pcd2', 'pcds', 'lat', 'long')
                     ->where('usertype', $request->usertype)
                     ->whereBetween('lat', [$calculate_bound['min_lat'], $calculate_bound['max_lat']])
