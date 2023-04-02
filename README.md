@@ -3,6 +3,8 @@
 
 This CLI program is built on the LARAVEL FRAMEWORK. The program process a zip file from a remote location, and unzip the file and pull the contents/ folder into the Storage > app > public > postcode directory. The Postcode directory contains 3 sub folders, and the application will seek to read the data in the Data > ONSPD_NOV_2022_UK.csv. The data is about 1.44GB in size with about 2.6 million rows.
 
+![Screenshot of database records](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/database.png)
+
 
 ## Repo Overview 🥳🥳
 
@@ -12,13 +14,19 @@ Specifications in the clone include
 
 <li> The program unzip file from a remote location and create in storage directory. </li> </br>
 
-![Screenshot of read write operation via the CLI](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/terminal.png)
-
 <li> Single CLI command to automate the read and write process and create record in the database </li>
 
 <li> Contains 2 (Two) endpoints that list and filter postcodes and returns the nearest postcode using the longitude and latitude </li>
 
+![Endpoint to list all postcodes](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/list.png)
+
+![Endpoint to return nearby postcodes](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/near.png)
+
 <li> Writing of errors to logfile </li>
+
+<li> <a href="https://documenter.getpostman.com/view/24345482/2s93RWMqEM"> Published Postman Collection </a> with sample body and example responses </li>
+
+![Published Postman collection](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/published.png)
 
 ## Requirements 🔧🔧
 
@@ -42,7 +50,8 @@ Specifications in the clone include
 
 Once the command is done you'll get a success message in the CLI 😜 </br>
 
-![Screenshot of start sheet](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/startsheet.png)
+![Screenshot of read write operation via the CLI](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/terminal.png)
+
 
 
 ## Coding Style 🚀🚀
@@ -52,6 +61,6 @@ Once the command is done you'll get a success message in the CLI 😜 </br>
 
 <li> Are tests available and how have they been set up : Yes, the project has a total of 4 test cases (2 Unit and 2 Feature). </li> </br>
 
-![Screenshot of end sheet](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/testcase.png)
+![Screenshot of test cases](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/test.png)
 
 
