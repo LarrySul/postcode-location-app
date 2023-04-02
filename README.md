@@ -1,7 +1,7 @@
 ## Postcode-location-app 😎😎
 
 
-This CLI program is built on the LARAVEL FRAMEWORK. The program process a zip file from a remote location, and unzip the file and pull the contents/ folder into the Storage > app > public > postcode directory. The Postcode directory contains 3 sub folders, and the application will seek to read the data in the Data > ONSPD_NOV_2022_UK.csv. The data is about 1.44GB in size with about 2.6 million rows.
+This CLI program is built on the LARAVEL FRAMEWORK. The program process a zip file from a <a href="https://parlvid.mysociety.org/os/ONSPD/2022-11.zip"> (http://parlvid.mysociety.org/os/)</a>, and unzip the file and pull the contents/ folder into the Storage > app > public > postcode directory. The Postcode directory contains 3 sub folders, and the application will seek to read the data in the Data > ONSPD_NOV_2022_UK.csv. The data is about 1.44GB in size with about 2.6 million rows.
 
 ![Screenshot of database records](https://github.com/LarrySul/postcode-location-app/blob/develop/public/screenshots/database.png)
 
