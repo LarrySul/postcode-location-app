@@ -43,8 +43,10 @@ class ImportPostcodes extends Command
     public function handle()
     {
         try {
-            $create_file_directory = $this->downloadAndSavePostcodeFromRemoteServer();
-            $this->info('File processing ...');
+            $zipFileUrl = config('services.zip.file_url');
+            $destinationPath = storage_path('app/public/postcode');
+            $this->info('File processing ... Pls, wait');
+            $create_file_directory = $this->downloadAndSavePostcodeFromRemoteServer($zipFileUrl, $destinationPath);
             InitializePostcodeJob::dispatch();
             $this->info('File completely processed ...');
         } catch (Exception $e) {

@@ -9,19 +9,17 @@ use Illuminate\Support\Facades\Storage;
 trait PostcodeUtils
 {
 
-    public function downloadAndSavePostcodeFromRemoteServer() : string 
+    public function downloadAndSavePostcodeFromRemoteServer(string $zipFileUrl, string $destinationPath) : string 
     {
-        $zipFileUrl = config('services.zip.file_url');
         try {
             $tempFilePath = Storage::path('public/'.uniqid('zip_', true));
             file_put_contents($tempFilePath, file_get_contents($zipFileUrl));
             $zip = new ZipArchive;
             if($zip->open($tempFilePath, ZipArchive::CREATE) === true){
-                $csvFilePath = storage_path('app/public/postcode');
-                $zip->extractTo($csvFilePath );
+                $zip->extractTo($destinationPath );
                 $zip->close();
                 unlink($tempFilePath);
-                return $csvFilePath;
+                return $destinationPath;
             }
         }catch(Exception $e){
             info('Unable to create file ' . $e->getMessage());
@@ -36,7 +34,6 @@ trait PostcodeUtils
         $lonRadians = deg2rad($longitude);
         
         $distanceRadians = $distanceInMiles / $earthRadius;
-        
         // Calculate the minimum and maximum latitude and longitude values for the bounding box
         $minLat = rad2deg($latRadians - $distanceRadians); //rad2deg converts a radian value to a degree value
         $maxLat = rad2deg($latRadians + $distanceRadians);
